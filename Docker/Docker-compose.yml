@@ -1,0 +1,28 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    ports:
+      - "0.0.0.0:8000:8000"
+    volumes:
+      - .:/django
+    networks:
+      - app_network
+        #    labels:
+        # kompose.service.type: LoadBalancer
+  db:
+    image: "nouchka/sqlite3"
+    container_name: sqlite3
+    volumes:
+      - db_data:/var/lib/sqlite/data
+    networks:
+      - app_network
+
+volumes:
+  db_data:
+
+networks:
+  app_network:
+    driver: bridge
+    name: django-framwork
+
