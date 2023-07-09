@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: db-deployment
+  namespace: django-school-management-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: db
+  template:
+    metadata:
+      labels:
+        app: db
+    spec:
+      containers:
+        - name: db
+          image: nouchka/sqlite3
+          volumeMounts:
+            - name: db-data
+              mountPath: /var/lib/sqlite/data
+      volumes:
+        - name: db-data
+          persistentVolumeClaim:
+            claimName: db-pvc
