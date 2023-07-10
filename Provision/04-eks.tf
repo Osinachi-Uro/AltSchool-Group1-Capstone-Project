@@ -72,7 +72,7 @@ resource "aws_eks_cluster" "eks-cluster" {
 
   vpc_config {
     security_group_ids = [aws_security_group.clustersg.id, aws_security_group.node-clustersg.id]
-    subnet_ids         = flatten([module.vpc.private_subnets, module.vpc.private_subnets])
+    subnet_ids         = flatten([module.vpc.private_subnets])
 
   }
 
@@ -103,7 +103,7 @@ resource "aws_eks_node_group" "node-1" {
     min_size     = 1
   }
 
-  instance_types = ["t2.medium"]
+  instance_types = ["t3.medium"]
   disk_size      = 20
 
   depends_on = [
