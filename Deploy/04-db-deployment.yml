@@ -7,15 +7,17 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: db
+      app: django-app
   template:
     metadata:
       labels:
-        app: db
+        app: django-app
     spec:
       containers:
-        - name: db
+        - name: db-deployment
           image: nouchka/sqlite3
+          ports:
+            - containerPort: 8000
           volumeMounts:
             - name: db-data
               mountPath: /var/lib/sqlite/data

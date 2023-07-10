@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: django-app
-          image: <image-name>:<tag>
+          image: adeoluwaja/djangov2
           ports:
             - containerPort: 8000
           volumeMounts:

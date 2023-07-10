@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: django-migrations
+  namespace: django-school-management-system
+spec:
+  template:
+    spec:
+      containers:
+        - name: django-app
+          image: adeoluwaja/djangov2
+          command: ['python', 'manage.py', 'migrate']
+      restartPolicy: Never
+  backoffLimit: 4
