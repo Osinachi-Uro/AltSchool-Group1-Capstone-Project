@@ -1,9 +1,9 @@
 provider "aws" {
-  region = "us-east-2"
+  region = "eu-west-1"
 }
 
 resource "aws_s3_bucket" "terraform_state" {
-  bucket = "capstone-statefile-test"
+  bucket = "capstone-statefile"
 
   # Prevent accidental deletion of this S3 bucket
   lifecycle {
@@ -41,7 +41,7 @@ resource "aws_s3_bucket_public_access_block" "public_access" {
 
 #create a DynamoDB table to use for locking
 resource "aws_dynamodb_table" "terraform_locks" {
-  name         = "capstone-statefile-locks-test"
+  name         = "capstone-statefile-locks"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
 
