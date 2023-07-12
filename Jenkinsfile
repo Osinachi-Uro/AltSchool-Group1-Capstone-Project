@@ -12,8 +12,7 @@ pipeline {
                 script {
                     dir('Provision') {
                         sh "terraform init"
-                        sh "terraform apply -auto-approve"
-                        sh "aws eks --region $(terraform output -raw region) update-kubeconfig --name $(terraform output -raw cluster_name)"        
+                        sh "terraform apply -auto-approve"        
                     }
                 }
             }
@@ -23,6 +22,7 @@ pipeline {
             steps {
                 script {
                     dir('Monitor') {
+                        sh "aws eks --region eu-west-1 update-kubeconfig --name capstone-cluster"
                         sh "terraform init"
                         sh "terraform apply -auto-approve"
                     }
