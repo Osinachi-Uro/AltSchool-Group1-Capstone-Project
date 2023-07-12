@@ -1,6 +1,6 @@
-access_key = "<your-aws-access-here>"
+#access_key = "<your-aws-access-here>"
 
-secret_key = "<your-aws-secret-here>"
+#secret_key = "<your-aws-secret-here>"
 
 vpc_cidr_block = "10.0.0.0/16"
 
