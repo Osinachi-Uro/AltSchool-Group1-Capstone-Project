@@ -7,11 +7,11 @@ variable "region" {
   default = "eu-west-1"
 }
 
-variable "vpc_cidr_block" {}
+#variable "vpc_cidr_block" {}
 
-variable "private_subnet_cidr_blocks" {}
+#variable "private_subnet_cidr_blocks" {}
 
-variable "public_subnet_cidr_blocks" {}
+#variable "public_subnet_cidr_blocks" {}
 
 # variable "kube_config" {
 #   type    = string
