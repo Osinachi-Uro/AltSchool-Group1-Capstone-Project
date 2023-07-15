@@ -46,5 +46,27 @@ pipeline {
                 }
             }
         }
+        
+        stage("Create Hostname") {
+            steps {
+                script {
+                    dir('Hostname') {
+                        sh "terraform init"
+                        sh "terraform apply -auto-approve"
+                    }
+                }
+            }
+        }
+
+        stage("Create OutputLB") {
+            steps {
+                script {
+                    dir('LB-output') {
+                        sh "terraform init"
+                        sh "terraform apply -auto-approve"
+                    }
+                }
+            }
+        }
     }
 }
